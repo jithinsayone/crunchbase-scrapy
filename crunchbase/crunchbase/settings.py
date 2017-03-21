@@ -79,14 +79,23 @@ WSGI_APPLICATION = 'crunchbase.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'basecrunch',
-        'USER': 'jithin',
-        'PASSWORD': 'pass1234',
+        'NAME': 'crunchbase',
+        'USER': 'crunch_user',
+        'PASSWORD': 'sayonecrunch',
         'HOST': 'localhost',
-        'PORT': '5433',
+        'PORT': '5432',
     }
 }
-
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'basecrunch',
+#         'USER': 'jithin',
+#         'PASSWORD': 'pass1234',
+#         'HOST': 'localhost',
+#         'PORT': '5433',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
