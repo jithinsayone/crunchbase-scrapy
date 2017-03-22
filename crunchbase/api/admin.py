@@ -13,6 +13,11 @@ class People_CrunchbaseAdmin(admin.ModelAdmin):
 
    )
 
+    def has_csv_permission(self, request):
+        """Only super users can export as CSV"""
+        if request.user.is_superuser:
+            return True
+
 admin.site.register(People_Crunchbase,People_CrunchbaseAdmin)
 admin.site.register(Company_Crunchbase,Company_CrunchbaseAdmin)
 
