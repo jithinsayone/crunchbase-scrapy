@@ -43,7 +43,7 @@ class People_Crunchbase(models.Model):
 
     def __str__(self):  # __unicode__ on Python 2
 
-        return self.name
+        return self.name+","+str(self.company_name)
 
 
 
