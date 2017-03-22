@@ -8,6 +8,10 @@ class Company_CrunchbaseAdmin(admin.ModelAdmin):
 class People_CrunchbaseAdmin(admin.ModelAdmin):
     list_display=( 'name','company_name','designation','location')
     search_fields = [ 'name','company_name','designation','location']
+    list_filter = (
+       'company_name', 'designation', 'location',
+
+   )
 
 admin.site.register(People_Crunchbase,People_CrunchbaseAdmin)
 admin.site.register(Company_Crunchbase,Company_CrunchbaseAdmin)
