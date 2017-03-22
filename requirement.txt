@@ -9,3 +9,4 @@ matplotlib==1.5.3
 numpy==1.11.2
 boto==2.43.0
 paramiko==2.0.2
+django-suit==0.2.13
