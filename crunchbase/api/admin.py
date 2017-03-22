@@ -1,5 +1,7 @@
 from django.contrib import admin
 from .models import People_Crunchbase,Company_Crunchbase
+from import_export.admin import ImportExportModelAdmin
+
 
 class Company_CrunchbaseAdmin(admin.ModelAdmin):
     list_display=( 'name','category','location')
@@ -13,12 +15,11 @@ class People_CrunchbaseAdmin(admin.ModelAdmin):
 
    )
 
-    def has_csv_permission(self, request):
-        """Only super users can export as CSV"""
-        if request.user.is_superuser:
-            return True
 
-admin.site.register(People_Crunchbase,People_CrunchbaseAdmin)
+class PeopleAdmin(ImportExportModelAdmin):
+    resource_class = People_Crunchbase
+
+admin.site.register(People_Crunchbase,People_CrunchbaseAdmin,PeopleAdmin)
 admin.site.register(Company_Crunchbase,Company_CrunchbaseAdmin)
 
 
