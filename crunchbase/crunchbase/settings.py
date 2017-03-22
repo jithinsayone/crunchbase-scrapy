@@ -32,7 +32,7 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'suit',
-    'django_csv_exports',
+    'import_export',
     'api',
     'django.contrib.admin',
     'django.contrib.auth',
