@@ -24,8 +24,8 @@ class Company_Crunchbase(models.Model):
 
 
 class People_Crunchbase(models.Model):
-    company= models.ForeignKey(Company_Crunchbase, related_name='get_users', on_delete=models.CASCADE)
-    name =  models.TextField(max_length=50, null=True, blank=True)
+    name =  models.TextField(max_length=50,primary_key=True)
+    company_name= models.TextField(max_length=50, null=True, blank=True)
     gender = models.TextField(max_length=10, null=True, blank=True)
     designation = models.TextField(max_length=300, null=True, blank=True)
     first_name = models.TextField(max_length=300, null=True, blank=True)
