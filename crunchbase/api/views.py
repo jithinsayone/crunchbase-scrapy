@@ -68,10 +68,13 @@ class PeopleSave(APIView):
           obj_person.rank = request.data["rank"]
           obj_person.twitter = request.data["twitter"]
           obj_person.facebook = request.data["facebook"]
-          obj_person.company = request.data["company"]
+          obj_person.company_name = request.data["company"]
           obj_person.location = request.data["location"]
           obj_person.linkdin = request.data["linkdin"]
           obj_person.save()
           return Response({'data_status':True})
       except:
          return Response({'data_status':False})
+
+
+
