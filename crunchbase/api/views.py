@@ -71,6 +71,7 @@ class PeopleSave(APIView):
           obj_person.company_name = request.data["company"]
           obj_person.location = request.data["location"]
           obj_person.linkdin = request.data["linkdin"]
+          obj_person.biography=request.data["biography"]
           obj_person.save()
           return Response({'data_status':True})
       except:
