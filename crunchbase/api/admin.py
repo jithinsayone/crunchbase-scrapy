@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import People_Crunchbase,Company_Crunchbase
+from .models import People_Crunchbase,Company_Crunchbase,AngellistCompany
 from import_export.admin import ImportExportModelAdmin
 from import_export import resources
 
@@ -24,7 +24,7 @@ class People_CrunchbaseAdmin(ImportExportModelAdmin):
 
 
 
-
+admin.site.register(AngellistCompany)
 admin.site.register(People_Crunchbase,People_CrunchbaseAdmin)
 admin.site.register(Company_Crunchbase,Company_CrunchbaseAdmin)
 
