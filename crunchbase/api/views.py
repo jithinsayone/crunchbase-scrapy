@@ -96,8 +96,10 @@ class AngelList(APIView):
 
       def get(self, request, format=None):
             total_data=AngellistCompany.objects.values_list('name')
-            # print total_data
-            return Response({'data':total_data})
+            final_data=[]
+            for entry in total_data:
+                final_data.append(entry[0])
+            return Response({'data':final_data})
 
       def post(self,request, *args, **kwargs):
 
