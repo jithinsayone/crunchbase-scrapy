@@ -96,24 +96,17 @@ class AngelList(APIView):
 
 
       def get(self, request, format=None):
-            total_data=AngellistCompany.objects.all()
+            total_data=AngellistCompany.objects.values_list('name')
             final_data=[]
             for entry in total_data:
                 final_data.append(entry[0])
 
-            paginator = Paginator(final_data, 50) # Show 25 contacts per page
 
             page = request.GET.get('page')
-            try:
-                data = paginator.page(page)
-            except PageNotAnInteger:
-                # If page is not an integer, deliver first page.
-                data = paginator.page(1)
-            except EmptyPage:
-                # If page is out of range (e.g. 9999), deliver last page of results.
-                data = paginator.page(paginator.num_pages)
+            page=page-1
 
-            return Response({"data":data})
+
+            return Response({"data":final_data[page*50:(page*50)+50]})
 
       def post(self,request, *args, **kwargs):
 
