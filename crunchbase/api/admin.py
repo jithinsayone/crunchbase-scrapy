@@ -22,10 +22,16 @@ class People_CrunchbaseAdmin(ImportExportModelAdmin):
    )
     resource_class = People_CrunchbaseResource
 
+class PeoplecrunchProxy(admin.ModelAdmin):
+    list_display=( 'name','company_name','designation','location')
+    search_fields = [ 'name','company_name','designation','location']
+    list_filter = (
+       'company_name', 'designation', 'location',
+
+   )
 
 
-
-admin.site.register(People_Crunchbase,People_CrunchbaseAdmin)
+admin.site.register(People_Crunchbase,People_CrunchbaseAdmin,PeoplecrunchProxy)
 admin.site.register(Company_Crunchbase,Company_CrunchbaseAdmin)
 
 
