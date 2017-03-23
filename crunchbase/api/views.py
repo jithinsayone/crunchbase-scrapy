@@ -96,8 +96,8 @@ class AngelList(APIView):
 
       def get(self, request, format=None):
             total_data=AngellistCompany.objects.values_list('name')
-            print total_data
-            return Response({'data_status':True})
+            # print total_data
+            return Response({'data':total_data})
 
       def post(self,request, *args, **kwargs):
 
