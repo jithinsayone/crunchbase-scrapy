@@ -14,7 +14,7 @@ class Company_CrunchbaseAdmin(admin.ModelAdmin):
     search_fields = [ 'name','category','location']
 
 class People_CrunchbaseAdmin(ImportExportModelAdmin):
-    list_display=( 'name','company_name')#,'designation','location')
+    list_display=( 'name','company_name','designation','location')
     search_fields = [ 'name','company_name','designation','location']
     list_filter = (
        'company_name', 'designation', 'location',
