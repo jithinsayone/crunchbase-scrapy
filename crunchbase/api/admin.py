@@ -14,8 +14,8 @@ class Company_CrunchbaseAdmin(admin.ModelAdmin):
     search_fields = [ 'name','category','location']
 
 class People_CrunchbaseAdmin(ImportExportModelAdmin):
-    list_display=( 'name','company_name','designation','location')
-    search_fields = [ 'name','company_name','designation','location']
+    list_display=( 'name')#,'company_name','designation','location')
+    # search_fields = [ 'name','company_name','designation','location']
     list_filter = (
        'company_name', 'designation', 'location',
 
@@ -31,7 +31,8 @@ class PeoplecrunchProxy(admin.ModelAdmin):
    )
 
 
-admin.site.register(People_Crunchbase,People_CrunchbaseAdmin,PeoplecrunchProxy)
+admin.site.register(People_Crunchbase,People_CrunchbaseAdmin)
+admin.site.register(PeoplecrunchProxy)
 admin.site.register(Company_Crunchbase,Company_CrunchbaseAdmin)
 
 
