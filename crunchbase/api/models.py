@@ -16,6 +16,8 @@ class Company_Crunchbase(models.Model):
     linkdin = models.TextField(max_length=300, null=True, blank=True)
     phone= models.TextField(max_length=300, null=True, blank=True)
     email = models.TextField(max_length=300, null=True, blank=True)
+    status = models.TextField(max_length=100, null=True, blank=True)
+    last_funding_type = models.TextField(max_length=100, null=True, blank=True)
 
     def __str__(self):  # __unicode__ on Python 2
 

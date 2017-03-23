@@ -10,8 +10,8 @@ class People_CrunchbaseResource(resources.ModelResource):
         model = People_Crunchbase
 
 class Company_CrunchbaseAdmin(admin.ModelAdmin):
-    list_display=( 'name','category','location')
-    search_fields = [ 'name','category','location']
+    list_display=( 'name','last_funding_type','status')
+    search_fields = [ 'name','category','location','status','last_funding_type']
 
 class People_CrunchbaseAdmin(ImportExportModelAdmin):
     list_display=( 'name','company_name','designation','location')

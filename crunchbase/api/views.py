@@ -39,6 +39,8 @@ class CompanySave(APIView):
               obj_company.linkdin = request.data["linkdin"]
               obj_company.phone = request.data["phone"]
               obj_company.email = request.data["email"]
+              obj_company.status = request.data["email"]
+              obj_company.last_funding_type = request.data["last-funding-type"]
               obj_company.save()
               return Response({'data_status':True})
           else:
