@@ -22,6 +22,8 @@ class People_CrunchbaseAdmin(ImportExportModelAdmin):
    )
     resource_class = People_CrunchbaseResource
 
+class AngelListAdmin(admin.ModelAdmin):
+    list_display=( 'name')
 
 
 admin.site.register(AngellistCompany)
