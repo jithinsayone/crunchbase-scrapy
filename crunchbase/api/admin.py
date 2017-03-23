@@ -4,23 +4,23 @@ from import_export.admin import ImportExportModelAdmin
 from import_export import resources
 
 
-# class People_CrunchbaseResource(resources.ModelResource):
-#
-#     class Meta:
-#         model = People_Crunchbase
+class People_CrunchbaseResource(resources.ModelResource):
+
+    class Meta:
+        model = People_Crunchbase
 
 class Company_CrunchbaseAdmin(admin.ModelAdmin):
     list_display=( 'name','category','location')
     search_fields = [ 'name','category','location']
 
-class People_CrunchbaseAdmin(admin.ModelAdmin):
+class People_CrunchbaseAdmin(ImportExportModelAdmin):
     list_display=( 'name','company_name','designation','location')
     search_fields = [ 'name','company_name','designation','location']
     list_filter = (
        'company_name', 'designation', 'location',
 
    )
-    # resource_class = People_CrunchbaseResource
+    resource_class = People_CrunchbaseResource
 
 
 
