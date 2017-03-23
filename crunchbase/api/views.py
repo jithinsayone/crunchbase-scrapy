@@ -88,6 +88,7 @@ class PeopleSave(APIView):
          return Response({'data_status':False})
 
 
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 class AngelList(APIView):
       permission_classes = (permissions.IsAuthenticated, )
@@ -99,7 +100,20 @@ class AngelList(APIView):
             final_data=[]
             for entry in total_data:
                 final_data.append(entry[0])
-            return Response({'data':final_data})
+
+            paginator = Paginator(final_data, 50) # Show 25 contacts per page
+
+            page = request.GET.get('page')
+            try:
+                contacts = paginator.page(page)
+            except PageNotAnInteger:
+                # If page is not an integer, deliver first page.
+                contacts = paginator.page(1)
+            except EmptyPage:
+                # If page is out of range (e.g. 9999), deliver last page of results.
+                contacts = paginator.page(paginator.num_pages)
+
+            return Response(contacts)
 
       def post(self,request, *args, **kwargs):
 
