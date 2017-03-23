@@ -102,7 +102,7 @@ class AngelList(APIView):
                 final_data.append(entry[0])
 
 
-            page = request.GET.get('page')
+            page = int(request.GET.get('page'))
             page=page-1
 
 
