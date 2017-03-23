@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework.authentication import TokenAuthentication
 from django.core.validators import URLValidator
 from django.core.exceptions import ValidationError
-from .models import People_Crunchbase,Company_Crunchbase
+from .models import People_Crunchbase,Company_Crunchbase,AngellistCompany
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 
@@ -88,4 +88,29 @@ class PeopleSave(APIView):
          return Response({'data_status':False})
 
 
+
+class AngelList(APIView):
+      permission_classes = (permissions.IsAuthenticated, )
+      authentication_classes = (TokenAuthentication,)
+
+
+      def get(self, request, format=None):
+            total_data=AngellistCompany.objects.values_list('name')
+            print total_data
+            return Response({'data_status':True})
+
+      def post(self,request, *args, **kwargs):
+
+
+          try:
+              if not AngellistCompany.objects.filter(name=request.data["name"]).exists():
+                  obj_angel=AngellistCompany()
+                  obj_angel.name = request.data["name"]
+                  obj_angel.save()
+                  return Response({'data_status':True})
+              else:
+                  return Response({'data_status':True})
+
+          except:
+             return Response({'data_status':False})
 
