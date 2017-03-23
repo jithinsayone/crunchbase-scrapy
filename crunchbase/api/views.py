@@ -97,11 +97,11 @@ class AngelList(APIView):
 
       def get(self, request, format=None):
             total_data=AngellistCompany.objects.all()
-            # final_data=[]
-            # for entry in total_data:
-            #     final_data.append(entry[0])
+            final_data=[]
+            for entry in total_data:
+                final_data.append(entry[0])
 
-            paginator = Paginator(total_data, 50) # Show 25 contacts per page
+            paginator = Paginator(final_data, 50) # Show 25 contacts per page
 
             page = request.GET.get('page')
             try:
