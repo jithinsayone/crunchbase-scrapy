@@ -20,7 +20,18 @@ class CompanySave(APIView):
 
 
   def get(self, request, format=None):
-        return Response({'data_status':True})
+     total_data=Company_Crunchbase.objects.values_list('name')
+     final_data=[]
+     for entry in total_data:
+        final_data.append(entry[0])
+
+
+     page = int(request.GET.get('page'))
+     page=page-1
+
+
+     return Response({"data":final_data[page*50:(page*50)+50]})
+
 
   def post(self,request, *args, **kwargs):
 
